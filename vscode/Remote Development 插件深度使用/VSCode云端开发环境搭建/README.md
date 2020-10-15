@@ -22,8 +22,7 @@
 2. `Remote-Developement` 插件
 3. `Docker CLI` (因为插件需要用到本机的docker命令)
 
-**注意**：在这里我会分开两个场景去说明：
-
+>**注意**：在这里我会分开两个场景去说明：
 > + `[本地]`：代表docker环境直接安装在本地电脑。
 > + `[远端]`：代表docker环境安装在远端服务器。
 
@@ -47,7 +46,28 @@
 
 2. 在 `cmd` 或者 `power shell` 里面打 `docker info` 命令，看到有东西出来就可以了。
 
-### 4. `[远端]` 设置 VSCode
+### 4. `[远端]` 开启 docker 远程调用 api 功能[<sup>[1]</sup>](#refer-anchor)
+
+> 文章参考：<https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd>
+
+跑下面的命令，创建 `override.conf` 文件，然后重启 `docker` 进程即可。
+
+```bash
+# create folder
+$ sudo mkdir /etc/systemd/system/docker.service.d/
+
+# create conf file
+$ sudo vi /etc/systemd/system/docker.service.d/override.conf
+
+# 添加下面内容到override.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/containerd/containerd.sock
+```
+
+> 注意： `tcp://0.0.0.0:2375` 的端口号可以根据自己需要修改。
+
+### 5. `[远端]` 设置 VSCode[<sup>[2]</sup>](#refer-anchor)
 
 > 叨哥：是的，连接远端docker的话要设置下面的东西，耶~
 
@@ -64,3 +84,11 @@
 都设置完之后，点开 `Remote Explorer`，如果能够看到docker的容器信息，辣就是成功嘞。
 
 <img width="%" alt="插件界面截图" src="./resources/vscode_remote_explorer.png">
+
+<div id="refer-anchor"></div>
+
+## 参考文章
+
+[1] [Docker官方教程：Enable the remote api for dockerd](https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd)
+
+[2] [Microsoft官方教程：Developing inside a container on a remote Docker host](https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-on-a-remote-docker-host)
