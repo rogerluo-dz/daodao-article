@@ -48,8 +48,6 @@
 
 ### 4. `[远端]` 开启 docker 远程调用 api 功能[<sup>[1]</sup>](#参考文章)
 
-> 文章参考：<https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd>
-
 跑下面的命令，创建 `override.conf` 文件，然后重启 `docker` 进程即可。
 
 ```bash
