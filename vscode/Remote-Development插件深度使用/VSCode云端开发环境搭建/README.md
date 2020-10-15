@@ -34,7 +34,7 @@
 
 按 `Ctrl+Shift+X` 打开插件界面，搜 `Remote Development` 安装即可。
 
-<img width="%" alt="插件界面截图" src="./resources/remote_development_extension.png">
+![插件界面](resources/remote_development_extension.png)
 
 ### 3. 安装docker
 
@@ -71,17 +71,17 @@ ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/cont
 
 在 vscode 里打开 `settings`：
 
-<img width="%" alt="插件界面截图" src="./resources/vscode_setting.png">
+![VSCode设置](resources/vscode_setting.png)
 
 搜索 `docker host`，在下面列出的位置里填写远端`docker`的地址：
 
-<img width="%" alt="插件界面截图" src="./resources/vscode_setting_docker_host.png">
+![填写 docker host 地址](resources/vscode_setting_docker_host.png)
 
 ## 测试一下
 
 都设置完之后，点开 `Remote Explorer`，如果能够看到docker的容器信息，辣就是成功嘞。
 
-<img width="%" alt="插件界面截图" src="./resources/vscode_remote_explorer.png">
+![打开 Remote Explorer](resources/vscode_remote_explorer.png)
 
 ## 参考文章
 
