@@ -46,7 +46,7 @@
 
 2. 在 `cmd` 或者 `power shell` 里面打 `docker info` 命令，看到有东西出来就可以了。
 
-### 4. `[远端]` 开启 docker 远程调用 api 功能[<sup>[1]</sup>](#refer-anchor)
+### 4. `[远端]` 开启 docker 远程调用 api 功能[<sup>[1]</sup>](#参考文章)
 
 > 文章参考：<https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd>
 
@@ -67,7 +67,7 @@ ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/cont
 
 > 注意： `tcp://0.0.0.0:2375` 的端口号可以根据自己需要修改。
 
-### 5. `[远端]` 设置 VSCode[<sup>[2]</sup>](#refer-anchor)
+### 5. `[远端]` 设置 VSCode[<sup>[2]</sup>](#参考文章)
 
 > 叨哥：是的，连接远端docker的话要设置下面的东西，耶~
 
@@ -84,8 +84,6 @@ ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/cont
 都设置完之后，点开 `Remote Explorer`，如果能够看到docker的容器信息，辣就是成功嘞。
 
 <img width="%" alt="插件界面截图" src="./resources/vscode_remote_explorer.png">
-
-<div id="refer-anchor"></div>
 
 ## 参考文章
 
