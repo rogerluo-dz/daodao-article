@@ -34,7 +34,7 @@
 
 ### 1. 安装 VSCode
 
-叨哥：自己度娘[下载链接](https://code.visualstudio.com/)去~ 略过！
+叨叨注：自己度娘[下载链接](https://code.visualstudio.com/)去~ 略过！
 
 ### 2. 安装插件
 
@@ -73,7 +73,7 @@ ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/cont
 
 ### 5. `[远端]` 设置 VSCode[<sup>[2]</sup>](#参考文章)
 
-> 老叨：是的，连接远端docker的话要设置下面的东西，耶~
+> 叨叨注：是的，连接远端docker的话要设置下面的东西，耶~
 
 在 vscode 里打开 `settings`：
 
