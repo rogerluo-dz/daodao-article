@@ -1,6 +1,6 @@
-# VSCode的容器开发环境搭建 (Remote-Containers)
+# VSCode之容器开发环境搭建 (Remote-Containers)
 
-原标题：VSCode的容器开发环境搭建 (Remote-Containers)
+原标题：VSCode之容器开发环境搭建 (Remote-Containers)
 
 作者：老叨_Douglas  
 
