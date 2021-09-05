@@ -34,7 +34,9 @@ $ curl -O https://repository.sonatype.org/service/local/artifact/maven/redirect?
 
 ![curl-fail-1](resources/curl_fail_1.png)
 
-出现了很多奇奇怪怪的东西，而且下载下来的文件名变成了 `'redirect?r=central-proxy'`，我们来 `cat` 一下这个文件看看里面有什么线索：
+出现了很多奇奇怪怪的东西，而且下载下来的文件名变成了 `'redirect?r=central-proxy'`。
+
+我们来 `cat` 一下这个文件看看里面有什么线索：
 
 ![curl-fail-2](resources/curl_fail_2.png)
 
@@ -49,7 +51,7 @@ $ curl -O https://repository.sonatype.org/service/local/artifact/maven/redirect?
 > 这里可以有两种方法解决问题：
 >
 > - 转义 url，将 `&` 前增加反斜杠 `\&` 。
-> - 用 `curl -d` 参数，并且强制使用 `GET` 方法 `-G`。
+> - 用 `curl -d` 参数来传参，并且强制使用 `GET` 方法 `-G`。
 >
 > ```sh
 > # 方法一：转义 url
@@ -67,21 +69,23 @@ $ curl -O https://repository.sonatype.org/service/local/artifact/maven/redirect?
 
 ![curl-fail-3](resources/curl_fail_3.png)
 
-从截图可以看到，我们下载下来的文件名还是不太对，叫做 `'redirect?r=central-proxy&g=org.apache.logging.log4j&a=log4j-api&v=LATEST'`，并不是我们想要的 `log4j-api-2.14.1.jar`，我们继续 `cat` 一下它：
+从截图可以看到，我们下载下来的文件名还是不太对，叫做 `'redirect?r=central-proxy&g=org.apache.logging.log4j&a=log4j-api&v=LATEST'`，并不是我们想要的 `log4j-api-2.14.1.jar`。
+
+我们继续 `cat` 一下它：
 
 ![curl-fail-4](resources/curl_fail_4.png)
 
 这次文件里面的内容不一样了，里面返回了一段话：
 
-```
+```text
 If you are not automatically redirected use this url: https://repository.sonatype.org/service/local/repositories/central-proxy/content/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar
 ```
 
-哇哦，起码服务器正确返回了我们想要的下载地址，但是为什么我们还是下载不到呢？
+芜湖，起码服务器正确返回了我们想要的下载地址，但是为什么我们还是下载不到呢？
 
 > **知识点二：**
 > 
-> 从内容可以猜测，服务器其实是想重定向到里面真正的下载地址然我们下载，我们可以通过参数 `curl -i` 来打印 `HTTP` 的头来看看：
+> 从内容可以猜测，服务器其实是想重定向到里面真正的下载地址让我们下载，我们可以通过参数 `curl -i` 来打印 `HTTP` 的头来看看：
 >
 > ![curl-fail-5](resources/curl_fail_5.png)
 
@@ -135,9 +139,9 @@ $ curl -I -L -s https://repository.sonatype.org/service/local/artifact/maven/red
 
 ## 第五次成功
 
-既然我们都获取到真正的下载地址了，那么我们拿着这个地址再用 `curl` 不就可以达到我们想要的效果了吗？
+既然我们都获取到真正的下载地址了，那么我们拿着这个地址再用 `curl -O` 就可以达到我们想要的效果了。
 
-马上上命令代码：
+立刻上代码：
 
 ```sh
 $ curl -I -L -s https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy\&g=org.apache.logging.log4j\&a=log4j-api\&v=LATEST \
