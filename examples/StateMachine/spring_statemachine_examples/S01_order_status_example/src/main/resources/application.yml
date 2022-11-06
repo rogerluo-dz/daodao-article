@@ -1,3 +1,14 @@
 spring:
   application:
-    name: "spring-statemachine-app"
+    name: "spring-statemachine_order-status-example"
+  datasource:
+    url: jdbc:h2:mem:h2db
+  h2:
+    console:
+      enabled: true
+  flyway:
+    locations: "classpath:db/migration/{vendor}"
+
+logging:
+  level:
+    root: INFO
