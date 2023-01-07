@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: "spring-operationrecord-example"
+  datasource:
+    url: jdbc:h2:mem:h2db
+  h2:
+    console:
+      enabled: true
+  flyway:
+    locations: "classpath:db/migration/{vendor}"
+
+logging:
+  level:
+    root: INFO
