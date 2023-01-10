@@ -2,89 +2,78 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>io.github.daodao</groupId>
-    <artifactId>springboot-opslog</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-
+  <groupId>io.github.daodao.opslog</groupId>
   <artifactId>opslog-examples</artifactId>
-  <packaging>jar</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
   <name>Opslog Examples</name>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.7</version>
+    <relativePath/>
+  </parent>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-r2dbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-validation</artifactId>
-    </dependency>
-    <!-- Flyway数据库版本管理工具 -->
-    <dependency>
-      <groupId>org.flywaydb</groupId>
-      <artifactId>flyway-core</artifactId>
-    </dependency>
-    <!--r2dbc-h2 Embedded Database -->
+  <modules>
+    <module>springboot-mvc</module>
+    <module>springboot-webflux</module>
+  </modules>
 
-    <dependency>
-      <groupId>io.r2dbc</groupId>
-      <artifactId>r2dbc-h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <!--  springboot 配置文件处理器  -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
+    <!-- https://github.com/powermock/powermock/releases -->
+    <powermock.version>2.0.4</powermock.version>
+    <mapstruct.version>1.5.3.Final</mapstruct.version>
+    <knife4j.version>4.0.0</knife4j.version>
+    <!--Opslog version -->
+    <opslog.version>0.0.1-SNAPSHOT</opslog.version>
+  </properties>
 
-    <!-- 测试包 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- PowerMock JUnit 4.4+ Module -->
-    <!--  https://github.com/powermock/powermock  -->
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
-      <version>${powermock.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <!-- PowerMock Mockito2 API -->
-    <!--  https://github.com/powermock/powermock  -->
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-mockito2</artifactId>
-      <version>${powermock.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <!-- Opslog -->
+      <dependency>
+        <groupId>io.github.daodao.opslog</groupId>
+        <artifactId>opslog-spring-boot-starter</artifactId>
+        <version>${opslog.version}</version>
+      </dependency>
+      <!-- MapStruct -->
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>${mapstruct.version}</version>
+      </dependency>
+      <!-- PowerMock JUnit 4.4+ Module -->
+      <!--  https://github.com/powermock/powermock  -->
+      <dependency>
+        <groupId>org.powermock</groupId>
+        <artifactId>powermock-module-junit4</artifactId>
+        <version>${powermock.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- PowerMock Mockito2 API -->
+      <!--  https://github.com/powermock/powermock  -->
+      <dependency>
+        <groupId>org.powermock</groupId>
+        <artifactId>powermock-api-mockito2</artifactId>
+        <version>${powermock.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Knife4j -->
+      <!-- https://doc.xiaominfo.com/docs/quick-start -->
+      <dependency>
+        <groupId>com.github.xiaoymin</groupId>
+        <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+        <version>${knife4j.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <includeSystemScope>true</includeSystemScope>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

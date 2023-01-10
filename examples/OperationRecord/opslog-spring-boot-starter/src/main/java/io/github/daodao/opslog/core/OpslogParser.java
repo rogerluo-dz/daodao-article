@@ -26,6 +26,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.daodao.opslog.common.OpslogConsts;
+import io.github.daodao.opslog.configuration.OpslogProperties;
 import io.github.daodao.opslog.core.evaluator.OpslogCachedExpressionEvaluator;
 import io.github.daodao.opslog.core.function.ICustomFunction;
 import io.github.daodao.opslog.core.operator.IOperatorService;
@@ -58,6 +59,8 @@ public class OpslogParser implements BeanFactoryAware {
   // beanFactory
   private BeanFactory beanFactory;
 
+  private OpslogProperties properties;
+
   private IOperatorService operatorService;
 
   private IResultPersistor resultPersistor;
@@ -68,9 +71,11 @@ public class OpslogParser implements BeanFactoryAware {
    * @param operatorService
    * @param resultPersistor
    */
-  public OpslogParser(IOperatorService operatorService, IResultPersistor resultPersistor) {
+  public OpslogParser(OpslogProperties properties, IOperatorService operatorService, IResultPersistor resultPersistor) {
+    Assert.notNull(properties, "OpslogProperties must not be null");
     Assert.notNull(operatorService, "IOperatorService must not be null");
     Assert.notNull(resultPersistor, "IOpslogResultPersistor must not be null");
+    this.properties = properties;
     this.operatorService = operatorService;
     this.resultPersistor = resultPersistor;
   }
@@ -272,11 +277,12 @@ public class OpslogParser implements BeanFactoryAware {
   public OpslogResult convertOpslogResult(Method jpMethod, String[] jpArgNames, Object[] jpArgs, Object jpResult,
       MethodExecuteResult executeResult, Map<String, Object> processData, Collection<String> internalErrorMsg) {
     OpslogResultBuilder builder = OpslogResult.builder()
-        .module(processData.get("module").toString())
-        .type(processData.get("type").toString())
-        .detail(processData.get("detail").toString())
-        .tenant(processData.get("tenant").toString())
-        .operator(processData.get("operator").toString())
+        .applicationName(properties.getApplicationName())
+        .module(Optional.ofNullable(processData.get("module")).orElse("").toString())
+        .type(Optional.ofNullable(processData.get("type")).orElse("").toString())
+        .detail(Optional.ofNullable(processData.get("detail")).orElse("").toString())
+        .tenant(Optional.ofNullable(processData.get("tenant")).orElse("").toString())
+        .operator(Optional.ofNullable(processData.get("operator")).orElse("").toString())
         .bizData(processData.get("bizData")) // 可能为 Object 对象，不能 toString
         .before(processData.get("before")) // 可能为 Object 对象，不能 toString
         .after(processData.get("after")) // 可能为 Object 对象，不能 toString

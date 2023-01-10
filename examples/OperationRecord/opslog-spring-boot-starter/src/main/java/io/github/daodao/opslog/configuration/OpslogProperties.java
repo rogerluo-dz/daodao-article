@@ -30,7 +30,7 @@ public class OpslogProperties {
   private boolean enabled = true;
 
   /**
-   * 应用名字，默认取 spring.application.name
+   * 应用名称，默认取 spring.application.name
    */
   @Value("${spring.application.name:#{null}}")
   private String applicationName;

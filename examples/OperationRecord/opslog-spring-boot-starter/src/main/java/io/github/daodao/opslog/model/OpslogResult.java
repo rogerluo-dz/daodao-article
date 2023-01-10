@@ -21,6 +21,15 @@ import lombok.NoArgsConstructor;
 public class OpslogResult {
 
   /**
+   * 当前应用的名称
+   * <p>
+   * 主要用于区分不同应用产生的日志信息
+   * <p>
+   * 可以通过配置项 opslog.applicationName 设置，默认取 spring.application.name
+   */
+  private String applicationName;
+
+  /**
    * 租户
    */
   private String tenant;

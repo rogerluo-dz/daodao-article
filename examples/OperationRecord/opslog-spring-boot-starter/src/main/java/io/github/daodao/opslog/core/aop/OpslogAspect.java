@@ -12,7 +12,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.aop.support.AopUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 import io.github.daodao.opslog.core.OpslogParser;
@@ -30,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Aspect
-@Component
 @AllArgsConstructor
 public class OpslogAspect {
 

@@ -60,12 +60,12 @@ public class OpslogCachedExpressionEvaluator extends CachedExpressionEvaluator {
     if (canEvaluate(expression)) {
       try {
         return getExpression(this.expressionCache, methodKey, expression).getValue(evaluationContext);
-      } catch (SpelEvaluationException | SpelParseException e) {
+      } catch (SpelEvaluationException | SpelParseException | IllegalStateException e) {
         log.warn("[Opslog] Evaluate failed. expression=[{}], error: {}", expression, e.getMessage());
         // 避免将可解析的参数名放到缓存，导致以后不能重新解析
         if (!expression.startsWith("#") && !expression.startsWith("@") && !expression.startsWith(OpslogConsts.PREFIX)) {
           unevaluableKeySet.add(expression);
-          log.warn("[Opslog] Expression key [{}] has been added to unevaluable cache");
+          log.warn("[Opslog] Expression key [{}] has been added to unevaluable cache", expression);
         }
       }
     }

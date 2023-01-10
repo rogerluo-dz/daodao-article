@@ -1,4 +1,4 @@
-package io.github.daodao.opslog.controller;
+package io.github.daodao.opslog.example.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;

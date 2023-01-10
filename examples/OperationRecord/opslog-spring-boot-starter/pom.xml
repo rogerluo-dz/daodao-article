@@ -2,23 +2,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.5</version>
-    <relativePath/>
-  </parent>
 
-  <groupId>io.github.daodao</groupId>
+  <groupId>io.github.daodao.opslog</groupId>
   <artifactId>opslog-spring-boot-starter</artifactId>
-  <version>2.0.0</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>opslog-spring-boot-starter</name>
+  <name>Opslog SpringBoot Starter</name>
   <description>通过注解实现操作日志记录</description>
 
   <properties>
     <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <spring-boot.version>2.7.7</spring-boot.version>
   </properties>
 
   <dependencies>
@@ -39,9 +38,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -59,6 +60,18 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>      <!-- The parent should provide all that -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <licenses>
     <license>
@@ -103,7 +116,7 @@
 
   <build>
     <plugins>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
         <version>1.6.7</version>
@@ -113,8 +126,8 @@
           <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
-      </plugin>
-      <plugin>
+      </plugin> -->
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
         <version>2.2.1</version>
@@ -126,8 +139,8 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
+      </plugin> -->
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.9.1</version>
@@ -143,8 +156,8 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
+      </plugin> -->
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.5</version>
@@ -157,6 +170,32 @@
             </goals>
           </execution>
         </executions>
+      </plugin> -->
+      <!-- Due to AspectJ, make sure that the annotation processor runs only once -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <!-- let the AspectJ plugin run all the processing and disable annotation processing in the maven-compiler-plugin configuration -->
+          <!-- <proc>none</proc> -->
+          <annotationProcessorPaths>
+            <!-- make sure lombok annotation processor run before spring-boot-configuration-processor -->
+            <path>
+              <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+              </dependency>
+            </path>
+            <path>
+              <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring-boot.version}</version>
+              </dependency>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
       </plugin>
     </plugins>
   </build>

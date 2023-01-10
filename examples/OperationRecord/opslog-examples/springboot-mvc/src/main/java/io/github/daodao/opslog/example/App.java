@@ -1,4 +1,4 @@
-package io.github.daodao.opslog;
+package io.github.daodao.opslog.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
