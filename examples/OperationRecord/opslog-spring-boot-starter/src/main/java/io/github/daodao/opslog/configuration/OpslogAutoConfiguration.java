@@ -1,11 +1,13 @@
 package io.github.daodao.opslog.configuration;
 
+import org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import io.github.daodao.opslog.core.OpslogParser;
 import io.github.daodao.opslog.core.aop.OpslogAspect;
@@ -23,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Configuration
+@Import(AopAutoConfiguration.class)
 @EnableConfigurationProperties({ OpslogProperties.class })
 @ConditionalOnProperty(prefix = OpslogProperties.PROPERTIES_PREFIX, name = OpslogProperties.PROPERTIES_ENABLED_NAME, havingValue = "true", matchIfMissing = true)
 public class OpslogAutoConfiguration {
