@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>opslog-examples-springboot-mvc</artifactId>
@@ -26,7 +27,7 @@
     <!--  Spring security  -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
+    <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
     <!--  springboot 配置文件处理器  -->
@@ -54,11 +55,15 @@
       <artifactId>mapstruct</artifactId>
     </dependency>
 
+    <!-- Knife4j -->
     <dependency>
       <groupId>com.github.xiaoymin</groupId>
       <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+    </dependency>
     <!-- 测试包 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

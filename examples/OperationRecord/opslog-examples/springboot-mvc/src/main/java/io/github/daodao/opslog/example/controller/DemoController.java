@@ -24,10 +24,24 @@ import lombok.extern.slf4j.Slf4j;
 public class DemoController {
 
   @Opslog
-  @Operation(summary = "测试1",description = "测试1详情")
-  @GetMapping("/t1")
-  public String index() {
-    return "index";
+  @Operation(summary = "没参数", description = "测试没参数场景")
+  @GetMapping("/testEmptyArg")
+  public String testEmptyArg() {
+    return "testEmptyArg";
+  }
+
+
+  @Opslog(tenant = "住户", operator = "operator", module = "测试模块", type = "test", condition = "true",
+    success = "成功的信息",
+    failure = "失败的 message",
+    detail = "详情",
+    before = "执行前",
+    after = "after 执行",
+    bizData = "data")
+  @Operation(summary = "全参数", description = "测试全参数场景")
+  @GetMapping("/testFullArgs")
+  public String testFullArgs() {
+    return "testFullArgs";
   }
 
 }

@@ -70,9 +70,11 @@
       <!-- https://doc.xiaominfo.com/docs/quick-start -->
       <dependency>
         <groupId>com.github.xiaoymin</groupId>
-        <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+        <artifactId>knife4j-dependencies</artifactId>
         <version>${knife4j.version}</version>
-      </dependency>
+        <type>pom</type>
+        <scope>import</scope>
+    </dependency>
     </dependencies>
   </dependencyManagement>
 
