@@ -10,7 +10,7 @@
   <name>Opslog Examples - springboot-mvc</name>
 
   <parent>
-    <groupId>io.github.daodao.opslog</groupId>
+    <groupId>io.github.rogerluo-dz.opslog</groupId>
     <artifactId>opslog-examples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
@@ -46,7 +46,7 @@
 
     <!-- Opslog -->
     <dependency>
-      <groupId>io.github.daodao.opslog</groupId>
+      <groupId>io.github.rogerluo-dz.opslog</groupId>
       <artifactId>opslog-spring-boot-starter</artifactId>
     </dependency>
 
