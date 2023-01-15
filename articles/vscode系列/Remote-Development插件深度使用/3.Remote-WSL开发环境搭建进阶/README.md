@@ -2,7 +2,7 @@
 
 原标题：VSCode之WSL开发环境搭建进阶 (Remote-WSL)
 
-作者：老叨_Douglas  
+作者：Roger_Luo  
 
 ---
 

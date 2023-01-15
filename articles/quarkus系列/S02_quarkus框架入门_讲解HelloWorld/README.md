@@ -2,7 +2,7 @@
 
 原标题：Quarkus框架入门 - （2）讲解HelloWorld
 
-作者：老叨_Douglas  
+作者：Roger_Luo  
 
 ---
 

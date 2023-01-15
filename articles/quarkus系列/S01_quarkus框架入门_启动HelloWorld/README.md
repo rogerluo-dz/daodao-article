@@ -2,13 +2,13 @@
 
 原标题：Quarkus框架入门 - （1）启动HelloWorld
 
-作者：老叨_Douglas  
+作者：Roger_Luo  
 
 ---
 
 ## 前言
 
-在 `Java` 领域，相信各位大佬对 `Spring` 全家桶框架用得已经是滚瓜烂熟了，老叨也是几年前就做了两个脚手架了，一个是基于 `springboot` 的单体Web脚手架，一个是基于 `spring cloud` 的微服务脚手架。
+在 `Java` 领域，相信各位大佬对 `Spring` 全家桶框架用得已经是滚瓜烂熟了，我也是几年前就做了两个脚手架了，一个是基于 `springboot` 的单体Web脚手架，一个是基于 `spring cloud` 的微服务脚手架。
 
 大概在去年前我也留意到一个 `Red Hat` 开源的 `Java` 框架 `Quarkus` ，定位为 `GraalVM` 和 `OpenJDK HotSpot` 量身定制的一个 `Kurbernetes Native` 云原生 `Java` 框架，不过当时刚刚 `1.0` Release，猜测应该还不算太成熟，所以当时也没有深入研究。
 
