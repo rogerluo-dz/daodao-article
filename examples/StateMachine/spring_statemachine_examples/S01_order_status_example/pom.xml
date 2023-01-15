@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.daodao.article</groupId>
+    <groupId>io.github.daodao</groupId>
     <artifactId>spring-statemachine-examples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
