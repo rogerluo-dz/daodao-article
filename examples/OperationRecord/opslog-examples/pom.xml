@@ -2,7 +2,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.rogerluo-dz.opslog</groupId>
+  <groupId>io.github.rogerluoz.opslog</groupId>
   <artifactId>opslog-examples</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -27,6 +27,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.deploy.skip>true</maven.deploy.skip>
 
     <!-- https://github.com/powermock/powermock/releases -->
     <powermock.version>2.0.4</powermock.version>
@@ -40,7 +41,7 @@
     <dependencies>
       <!-- Opslog -->
       <dependency>
-        <groupId>io.github.rogerluo-dz.opslog</groupId>
+        <groupId>io.github.rogerluoz.opslog</groupId>
         <artifactId>opslog-spring-boot-starter</artifactId>
         <version>${opslog.version}</version>
       </dependency>
@@ -74,7 +75,7 @@
         <version>${knife4j.version}</version>
         <type>pom</type>
         <scope>import</scope>
-    </dependency>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
